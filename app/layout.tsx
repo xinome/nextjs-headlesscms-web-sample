@@ -6,11 +6,11 @@ export const metadata: Metadata = {
   description: 'Next.js（App Router）と microCMS を用いたWebサイトサンプル',
 }
 
-export default function RootLayout({
+const RootLayout = ({
   children,
 }: {
   children: React.ReactNode
-}) {
+}) => {
   return (
     <html lang="ja">
       <body>
@@ -37,3 +37,5 @@ export default function RootLayout({
     </html>
   )
 }
+
+export default RootLayout

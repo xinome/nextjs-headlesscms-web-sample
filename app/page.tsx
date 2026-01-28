@@ -1,4 +1,4 @@
-export default function Home() {
+const Home = () => {
   return (
     <div className="container">
       <h1>トップページ</h1>
@@ -6,3 +6,5 @@ export default function Home() {
     </div>
   )
 }
+
+export default Home
