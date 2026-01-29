@@ -35,7 +35,8 @@
 - **Image Optimization**: next/image
 - **SEO**: Metadata API
 - **Source Control**: GitHub
-- **CI/CD**: GitHub Actions（予定）
+- **CI/CD**: GitHub Actions
+- **Testing**: Jest + React Testing Library
 - **CDN / Security**: Cloudflare（設計想定）
 
 ---
@@ -80,5 +81,23 @@
 ## 🚀 開発環境セットアップ
 
 ```bash
-npm install
-npm run dev
+yarn install
+yarn dev
+```
+
+---
+
+## 🧪 テスト
+
+- **実行**: `yarn test`（watch モード: `yarn test:watch`）
+- **対象**: コンポーネント（PostCard）、ページ（/posts, /posts/[slug], /categories/[slug]）、microCMS クエリ関数
+- **設計**: `docs/testing-PostCard.md` に PostCard のテストケース一覧を記載
+
+---
+
+## 🔄 CI（GitHub Actions）
+
+- **ワークフロー**: `.github/workflows/ci.yml`
+- **トリガー**: `main` / `develop` への push および pull_request
+- **ジョブ**: `yarn install --frozen-lockfile` → `yarn lint` → `yarn test` → `yarn build`
+- **環境変数**: `yarn build` 実行時に `MICROCMS_SERVICE_DOMAIN` / `MICROCMS_API_KEY` を GitHub Secrets から参照（リポジトリの Settings → Secrets and variables → Actions で設定）
