@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import { getPosts } from '@/lib/microcms/queries'
 import type { Post } from '@/types/microcms'
 import PostCard from '@/components/PostCard'
@@ -29,9 +28,7 @@ const PostsPage = async () => {
           >
             {posts.map((post: Post) => (
               <li key={post.id}>
-                <Link href={`/posts/${post.slug}`}>
-                  <PostCard post={post} />
-                </Link>
+                <PostCard post={post} />
               </li>
             ))}
           </ul>

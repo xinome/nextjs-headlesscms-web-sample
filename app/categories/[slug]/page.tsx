@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
-import Link from 'next/link'
 import {
   getCategoryBySlug,
   getCategories,
@@ -45,9 +44,7 @@ const CategoryPage = async ({ params }: PageProps) => {
         >
           {posts.map((post: Post) => (
             <li key={post.id}>
-              <Link href={`/posts/${post.slug}`}>
-                <PostCard post={post} />
-              </Link>
+              <PostCard post={post} />
             </li>
           ))}
         </ul>

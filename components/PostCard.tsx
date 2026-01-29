@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import type { Post } from '@/types/microcms'
 
 type Props = {
@@ -21,8 +22,6 @@ const PostCard = ({ post }: Props) => {
         padding: '1rem',
         border: '1px solid #e5e5e5',
         borderRadius: '8px',
-        textDecoration: 'none',
-        color: 'inherit',
         backgroundColor: '#fff',
         alignItems: 'flex-start',
       }}
@@ -58,11 +57,14 @@ const PostCard = ({ post }: Props) => {
             display: 'flex',
             gap: '0.5rem',
             flexWrap: 'wrap',
+            alignItems: 'center',
           }}
         >
           <span>{publishedDateLabel}</span>
           {post.category && (
-            <span
+            <Link
+              href={`/categories/${post.category.slug}`}
+              className="post-card-link"
               style={{
                 padding: '0.1rem 0.5rem',
                 borderRadius: '999px',
@@ -72,7 +74,7 @@ const PostCard = ({ post }: Props) => {
               }}
             >
               {post.category.name}
-            </span>
+            </Link>
           )}
         </div>
 
@@ -84,7 +86,13 @@ const PostCard = ({ post }: Props) => {
             fontWeight: 600,
           }}
         >
-          {post.title}
+          <Link
+            href={`/posts/${post.slug}`}
+            className="post-card-link"
+            style={{ color: 'inherit' }}
+          >
+            {post.title}
+          </Link>
         </h2>
 
         {post.excerpt && (
