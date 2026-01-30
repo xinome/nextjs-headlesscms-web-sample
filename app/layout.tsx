@@ -1,5 +1,13 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
+import { Noto_Sans_JP } from 'next/font/google'
 import './globals.css'
+
+const notoSansJP = Noto_Sans_JP({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  display: 'swap',
+})
 
 export const metadata: Metadata = {
   title: 'Next.js × microCMS Sample',
@@ -13,15 +21,15 @@ const RootLayout = ({
 }) => {
   return (
     <html lang="ja">
-      <body>
+      <body className={notoSansJP.className}>
         <header className="header">
           <div className="header-inner">
             <h1 className="header-logo">
-              <a href="/">Next.js × microCMS Sample</a>
+              <Link href="/">Next.js × microCMS Sample</Link>
             </h1>
             <nav className="header-nav">
-              <a href="/">トップ</a>
-              <a href="/posts">記事一覧</a>
+              <Link href="/">トップ</Link>
+              <Link href="/posts">記事一覧</Link>
             </nav>
           </div>
         </header>
